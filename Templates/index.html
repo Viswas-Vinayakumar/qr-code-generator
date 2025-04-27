@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJaoZ2QF6gDsf4tn0FfyygI6XBmCXY5b2hxd2Fw6LqK8ftuK9fSml5pP4b2h" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+        }
+
+        .btn-generate {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-generate:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .qr-image {
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <form action="/generate" method="POST">
+            <input type="text" name="data" placeholder="Enter text or URL" required>
+            <br>
+            <button type="submit" class="btn-generate">Generate QR Code</button>
+        </form>
+
+        {% if qr_image %}
+        <div class="qr-image">
+            <h3>Your QR Code:</h3>
+            <img src="{{ qr_image }}" alt="QR Code" class="img-fluid">
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper.js (for animations and dropdowns) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybB2K7kJdO1Qf/jQJ/5o3kRtk56kP71p6OKcD6P4VX9+N2A0g" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-ygDq2rSiSyGEz4n98H8EjwTff3axwq4l/Fm1zG0tKwOgcTkhG6z3Zg0q2R6qHjxX" crossorigin="anonymous"></script>
+</body>
+</html>
